@@ -102,6 +102,7 @@ export default function EventDetail() {
         </section>
       </main>
 
+      {/* Footer CTA */}
       <footer className="footer-cta">
         <p>Powered by Ticket2U Purwadhika Mini Project</p>
       </footer>
