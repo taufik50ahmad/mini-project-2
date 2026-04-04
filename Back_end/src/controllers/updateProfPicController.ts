@@ -22,6 +22,7 @@ async function updateProfPicController(req: Request, res: Response) {
         message: error.message,
       });
     }
+
     return res.status(500).json({
       message: error.message,
     });

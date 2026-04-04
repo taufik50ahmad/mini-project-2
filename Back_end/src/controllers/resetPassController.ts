@@ -1,25 +1,32 @@
 import type { Request, Response } from "express";
 import resetPassService from "../services/resetPassService.js";
+import { resetPasswordSchema } from "../validators/auth.validate.js";
+import z from "zod";
 
 async function resetPassController(req: Request, res: Response) {
-  const { token, newPassword } = req.body;
+  const validation = resetPasswordSchema.safeParse(req.body);
 
-  try {
-    const result = await resetPassService(token, newPassword);
-
-    return res.status(200).json(result);
-  } catch (error: any) {
-    if (error.message === "Invalid or expired token") {
-      return res.status(400).json({
-        message: "Invalid or expired token",
-      });
-    }
-
-    return res.status(500).json({
-      message: "Something went wrong",
-      error: error.message,
+  if (!validation.success) {
+    return res.status(400).json({
+      message: "Validation failed",
+      errors: z.flattenError(validation.error),
     });
   }
+
+  try {
+    const { token, newPassword } = validation.data;
+
+    await resetPassService({ token, newPassword });
+
+    return res.status(200).json({
+      message: "Password reset successful",
+    });
+  } catch (error: any) {
+    return res.status(400).json({
+      message: error.message,
+    });
+  }
+
 }
 
 export default resetPassController;

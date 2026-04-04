@@ -14,6 +14,7 @@ async function updateProfPicService(file: Express.Multer.File, userId: number) {
 
   const uploadResult = await cloudinary.uploader.upload(base64Image, {
     folder: "profile-pictures",
+    public_id: `user_${userId}_${Date.now()}`,
   });
 
   const updatedUser = await prisma.user.update({

@@ -1,7 +1,7 @@
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
 
-async function resetPassService(token: string, newPassword: string) {
+async function resetPassService({ token, newPassword }: { token: string; newPassword: string }) {
   const user = await prisma.user.findFirst({
     where: {
       resetPasswordToken: token,

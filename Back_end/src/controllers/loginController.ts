@@ -15,9 +15,10 @@ async function loginController(req: Request, res: Response) {
 
     return res.status(200).json(result);
   } catch (error: any) {
+    console.error("LOGIN ERROR:", error); // 🔥 THIS WILL SHOW EVERYTHING
+
     return res.status(500).json({
-      message: "Something went wrong",
-      error: error.message,
+      message: error.message,
     });
   }
 }

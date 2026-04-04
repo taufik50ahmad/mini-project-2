@@ -27,10 +27,13 @@ import updateProfPicRoute from "./routes/updateProfPicRoute.js";
 import forgotPassRoute from "./routes/forgotPassRoute.js";
 import resetPassRoute from "./routes/resetPassRoute.js";
 import logoutRoute from "./routes/logoutRoute.js";
+import organizerRoute from "./routes/organizerRoute.js";
+import cors from "cors";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
 
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
 app.get("/api/health", (req: Request, res: Response) => {
@@ -38,6 +41,9 @@ app.get("/api/health", (req: Request, res: Response) => {
     .status(200)
     .json({ message: "API is Running!", uptime: process.uptime() });
 });
+
+// Organizer Route
+app.use("/api/organizer", organizerRoute);
 
 // Register
 app.use("/api", registerRoute);

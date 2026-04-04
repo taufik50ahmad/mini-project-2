@@ -1,24 +1,28 @@
 import prisma from "../lib/prisma.js";
 
-async function deleteEventService(eventId: number, email: string) {
-    const event = await prisma.event.findFirst({
-      where: {
-        id: eventId,
-        organizer: {
-          email: email,
-        },
+export const deleteEventService = async (eventId: number, user: any) => {
+  // 🔍 Check if event exists AND belongs to user
+  const event = await prisma.event.findFirst({
+    where: {
+      id: eventId,
+      organizer: {
+        email: user.email,
       },
-    });
+    },
+  });
 
-    if (!event) {
-      throw new Error("Event not found or not yours");
-    }
+  if (!event) {
+    throw new Error("Event not found or not yours");
+  }
 
-    await prisma.event.delete({
-      where: { id: eventId },
-    });
+  // 🗑️ Delete event
+  await prisma.event.delete({
+    where: {
+      id: eventId,
+    },
+  });
 
-    return {message: "Event Successfully Deleted"}
-}
-
-export default deleteEventService;
+  return {
+    message: "Event deleted successfully",
+  };
+};
