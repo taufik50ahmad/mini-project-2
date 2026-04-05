@@ -1,0 +1,102 @@
+/* RegisterPage.css - Dengan Background Concert */
+.register-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+    url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') 
+    center/cover no-repeat;
+  position: relative;
+}
+
+.register-container {
+  background: rgba(30, 41, 59, 0.95);   /* Semi-transparent dark */
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  border: 1px solid #475569;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);           /* Efek kaca (glassmorphism) */
+}
+
+.register-container h1 {
+  text-align: center;
+  margin-bottom: 2.2rem;
+  color: #e0e7ff;
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 16px 18px;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 12px;
+  color: #e2e8f0;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+.form-group input::placeholder {
+  color: #64748b;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 1.8rem;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* Link to Login */
+.login-link {
+  text-align: center;
+  margin-top: 2rem;
+  color: #94a3b8;
+  font-size: 0.98rem;
+}
+
+.login-link a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 2.2rem 1.8rem;
+  }
+}

@@ -136,92 +136,105 @@ export default function ProfilePage() {
 
   if (!user) return <p>Loading...</p>;
 
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>Profile</h1>
+return (
+  <div className="profile-page">
+    <div className="container">
+      <h1>My Profile</h1>
 
-      {/* AVATAR */}
-      <img
-        src={
-          user.profilePic
-            ? `${user.profilePic}?v=${imageVersion}`
-            : "https://via.placeholder.com/120"
-        }
-        alt="avatar"
-        width={120}
-        height={120}
-        style={{ borderRadius: "50%", objectFit: "cover" }}
-      />
+      {/* Profile Card */}
+      <div className="profile-card">
+        <div className="avatar-container">
+          <img
+            src={
+              user.profilePic
+                ? `${user.profilePic}?v=${imageVersion}`
+                : "https://via.placeholder.com/140"
+            }
+            alt="avatar"
+            className="avatar"
+          />
+          <label className="upload-btn">
+            📷
+            <input
+              type="file"
+              style={{ display: "none" }}
+              onChange={async (e) => {
+                if (e.target.files && e.target.files[0]) {
+                  await handleUpload(e.target.files[0]);
+                }
+              }}
+            />
+          </label>
+        </div>
 
-      <input
-        type="file"
-        name="profilePicture"
-        onChange={async (e) => {
-          if (e.target.files) {
-            await handleUpload(e.target.files[0]); // ✅ wait properly
-          }
-        }}
-      />
-
-      {/* INFO */}
-      <div>
-        <p>
-          <b>Referral Code:</b> {user.refCode}
-        </p>
-        <p>
-          <b>Points:</b> {points}
-        </p>
-        <p>
-          <b>Coupons:</b> {coupons}
-        </p>
+        <div className="user-info">
+          <p><strong>{user.name}</strong></p>
+          <p>{user.email}</p>
+          <p><strong>Role:</strong> {user.role}</p>
+          <p><strong>Referral Code:</strong> <span style={{ color: "#a5b4fc" }}>{user.refCode}</span></p>
+          <p><strong>Points:</strong> {points}</p>
+          <p><strong>Coupons:</strong> {coupons}</p>
+        </div>
       </div>
 
-      {/* EDIT FORM */}
-      <div style={{ marginTop: "20px" }}>
+      {/* Edit Section */}
+      <div className="edit-section">
         <h3>Edit Profile</h3>
 
-        <input
-          value={editName}
-          onChange={(e) => setEditName(e.target.value)}
-          placeholder="Name"
-        />
+        <div className="input-group">
+          <input
+            value={editName}
+            onChange={(e) => setEditName(e.target.value)}
+            placeholder="Full Name"
+          />
+        </div>
 
-        <input
-          value={editEmail}
-          onChange={(e) => setEditEmail(e.target.value)}
-          placeholder="Email"
-        />
+        <div className="input-group">
+          <input
+            value={editEmail}
+            onChange={(e) => setEditEmail(e.target.value)}
+            placeholder="Email Address"
+          />
+        </div>
 
-        <p onClick={() => setShowPasswordForm((prev) => !prev)}>
+        <p className="password-toggle" onClick={() => setShowPasswordForm(!showPasswordForm)}>
           {showPasswordForm ? "Cancel Password Change" : "Change Password"}
         </p>
 
         {showPasswordForm && (
-          <div style={{ marginTop: "10px" }}>
-            <input
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-              placeholder="Old Password"
-              type="password"
-            />
-
-            <input
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              placeholder="New Password"
-              type="password"
-            />
-
-            <input
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm Password"
-              type="password"
-            />
+          <div>
+            <div className="input-group">
+              <input
+                type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                placeholder="Old Password"
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="New Password"
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm New Password"
+              />
+            </div>
           </div>
         )}
-        <button onClick={handleUpdate}>Save</button>
+
+        <button className="btn-save" onClick={handleUpdate}>
+          Save Changes
+        </button>
       </div>
     </div>
-  );
-}
+  </div>
+);
+  };
