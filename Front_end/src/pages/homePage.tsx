@@ -48,15 +48,14 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-
       {/* Hero dengan Slider */}
       <section className="hero">
         <div className="hero-content">
           <div className="hero-text">
             <h1>Discover Amazing Events</h1>
             <p>
-              Best Website to book tickets for the best concerts, music festivals, 
-              and unforgettable live experiences across Indonesia.
+              Best Website to book tickets for the best concerts, music
+              festivals, and unforgettable live experiences across Indonesia.
             </p>
           </div>
 
@@ -91,51 +90,65 @@ export default function HomePage() {
           <h2 className="section-title">Upcoming Events</h2>
 
           {events.length === 0 ? (
-            <p className="no-events">No upcoming events available at the moment.</p>
+            <p className="no-events">
+              No upcoming events available at the moment.
+            </p>
           ) : (
             <div className="event-grid">
-  {events.map((event) => (
-    <div
-      key={event.id}
-      className="event-card"
-      onClick={() => navigate(`/events/${event.id}`)}
-    >
-      <h3>{event.title}</h3>
-      <p>{event.description}</p>
+              {events.map((event) => (
+                <div
+                  key={event.id}
+                  className="event-card"
+                  onClick={() => navigate(`/events/${event.id}`)}
+                >
+                  <h3>{event.title}</h3>
+                  <p>{event.description}</p>
 
-      <div className="event-info">
-        <span>📍 {event.location}</span>
-        <span>👤 {event.organizer.name}</span>
-        <span>📅 {new Date(event.eventDate).toLocaleDateString("id-ID")}</span>
-        <span>🎟 {event.availableSeats} / {event.totalSeats}</span>
-      </div>
+                  <div className="event-info">
+                    <span>📍 {event.location}</span>
+                    <span>👤 {event.organizer.name}</span>
+                    <span>
+                      📅{" "}
+                      {new Date(event.eventDate).toLocaleDateString("en-GB", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </span>
+                    <span>
+                      🎟 {event.availableSeats} / {event.totalSeats}
+                    </span>
+                  </div>
 
-      <div className="price">
-        {event.price === 0 ? "Free" : `Rp ${event.price.toLocaleString("id-ID")}`}
-      </div>
+                  <div className="price">
+                    {event.price === 0
+                      ? "Free"
+                      : `Rp ${event.price.toLocaleString("id-ID")}`}
+                  </div>
 
-      {/* Sponsor Section */}
-      <div className="sponsors">
-        <div className="sponsor-item">
-          <img 
-            src={gojekLogo} 
-            alt="Gojek" 
-            className="sponsor-logo" 
-          />
-          <span>Gojek</span>
-        </div>
-        <div className="sponsor-item">
-          <img 
-            src={tselLogo} 
-            alt="Telkomsel" 
-            className="sponsor-logo" 
-          />
-          <span>Telkomsel</span>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+                  {/* Sponsor Section */}
+                  <div className="sponsors">
+                    <div className="sponsor-item">
+                      <img
+                        src={gojekLogo}
+                        alt="Gojek"
+                        className="sponsor-logo"
+                      />
+                      <span>Gojek</span>
+                    </div>
+                    <div className="sponsor-item">
+                      <img
+                        src={tselLogo}
+                        alt="Telkomsel"
+                        className="sponsor-logo"
+                      />
+                      <span>Telkomsel</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
