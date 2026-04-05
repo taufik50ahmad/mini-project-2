@@ -1,10 +1,8 @@
-/* Layout.css */
 .layout {
   font-family: system-ui, -apple-system, sans-serif;
   background: #0f172a;
   color: #e2e8f0;
   min-height: 100vh;
-  width: 100%;
 }
 
 .navbar {
@@ -38,24 +36,19 @@
 
 .nav-auth {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 12px;
 }
 
 .nav-btn {
   padding: 8px 18px;
   border-radius: 9999px;
-  background: #334155;
-  color: #e2e8f0;
-  border: none;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s ease;
+  border: none;
 }
 
 .nav-btn:hover {
-  background: #475569;
   transform: translateY(-1px);
 }
 
@@ -77,36 +70,15 @@
   background: #dc2626;
 }
 
-/* HERO BESAR UNTUK GAMBAR */
-.layout > .event-detail-page {
-  margin-top: 0;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .nav-content {
     flex-direction: column;
     gap: 12px;
   }
+  
   .nav-auth {
     width: 100%;
     justify-content: center;
   }
-}
-
-/* Layout.css - tambahkan di paling bawah */
-
-.layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.navbar {
-  flex-shrink: 0; /* agar navbar tidak ikut mengecil */
-}
-
-/* Biarkan Outlet (halaman) mengambil sisa ruang */
-.layout > .event-detail-page {
-  flex: 1;
 }

@@ -36,7 +36,7 @@ export default function Layout() {
 
   return (
     <div className="layout">
-      {/* NAVBAR - Dark Theme */}
+      {/* NAVBAR */}
       <nav className="navbar">
         <div className="nav-content">
           {/* Logo */}

@@ -1,0 +1,65 @@
+/* ResetPasswordPage.css */
+
+.reset-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.88)),
+    url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') 
+    center/cover no-repeat;
+}
+
+.reset-container {
+  background: rgba(30, 41, 59, 0.95);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid #475569;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.reset-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #e0e7ff;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.reset-container input {
+  width: 100%;
+  padding: 16px 18px;
+  margin-bottom: 1rem;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 12px;
+  color: #e2e8f0;
+  font-size: 1.05rem;
+}
+
+.reset-container input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+.reset-container button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 1.5rem;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset-container button:hover {
+  background: #4f46e5;
+}

@@ -29,6 +29,7 @@ export default function RegisterPage() {
           name: form.name,
           email: form.email,
           password: form.password,
+          confirmPassword: form.confirmPassword,
           referralCode: form.referralCode || undefined,
         }),
       });
@@ -39,7 +40,9 @@ export default function RegisterPage() {
         let messages: string[] = [];
 
         if (data.errors?.fieldErrors) {
-          messages.push(...(Object.values(data.errors.fieldErrors).flat() as string[]));
+          messages.push(
+            ...(Object.values(data.errors.fieldErrors).flat() as string[]),
+          );
         }
         if (data.errors?.formErrors) {
           messages.push(...data.errors.formErrors);
@@ -92,7 +95,9 @@ export default function RegisterPage() {
             type="password"
             placeholder="Confirm Password"
             value={form.confirmPassword}
-            onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
+            onChange={(e) =>
+              setForm({ ...form, confirmPassword: e.target.value })
+            }
           />
         </div>
 
@@ -100,7 +105,9 @@ export default function RegisterPage() {
           <input
             placeholder="Referral Code (optional)"
             value={form.referralCode}
-            onChange={(e) => setForm({ ...form, referralCode: e.target.value.toUpperCase() })}
+            onChange={(e) =>
+              setForm({ ...form, referralCode: e.target.value.toUpperCase() })
+            }
             maxLength={10}
           />
         </div>
@@ -111,7 +118,13 @@ export default function RegisterPage() {
 
         <div className="login-link">
           Already have an account?{" "}
-          <a href="/login" onClick={(e) => { e.preventDefault(); navigate("/login"); }}>
+          <a
+            href="/login"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/login");
+            }}
+          >
             Login here
           </a>
         </div>
