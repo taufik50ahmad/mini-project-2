@@ -1,0 +1,25 @@
+:root {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: dark;
+  color: #e2e8f0;
+  background-color: #0f172a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #0f172a;
+  /* Hilangkan flex center yang bikin konten kecil */
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Reset global agar hero bisa full */
+* {
+  box-sizing: border-box;
+}

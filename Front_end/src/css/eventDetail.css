@@ -1,0 +1,211 @@
+/* ===== Global ===== */
+.event-detail-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  height: 75vh;
+  min-height: 520px;
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)),
+    url('https://images.unsplash.com/photo-1549576490-b0b4831aa60a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.date {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+}
+
+.venue {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* ===== Status ===== */
+.status {
+  display: inline-block;
+  padding: 0.5rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  background: #22c55e;
+  color: #0f172a;
+}
+
+.status.ended {
+  background: #ef4444;
+  color: white;
+}
+
+/* ===== Buttons ===== */
+.btn-buy,
+.btn-select {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn-buy {
+  background: #6366f1;
+  color: white;
+}
+
+.btn-buy:hover:not(:disabled) {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.btn-buy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-select {
+  background: #4f46e5;
+  color: white;
+}
+
+.btn-select:hover {
+  background: #4338ca;
+}
+
+/* ===== Quick Info ===== */
+.quick-info {
+  background: #1e293b;
+  padding: 2.5rem 0;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.info-row strong {
+  display: block;
+  color: #a5b4fc;
+  margin-bottom: 0.3rem;
+}
+
+/* ===== Main ===== */
+.main {
+  padding: 4rem 0;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #c7d2fe;
+}
+
+.description ul {
+  padding-left: 1.2rem;
+}
+
+.description li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Tickets ===== */
+.ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.ticket-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid #334155;
+  transition: 0.3s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-6px);
+  border-color: #6366f1;
+}
+
+.ticket-card.selected {
+  border: 2px solid #818cf8;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.2);
+}
+
+.ticket-card.soldout {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  color: #fbbf24;
+}
+
+.soldout-badge {
+  margin-top: 1rem;
+  background: #dc2626;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* ===== Rules ===== */
+.rules p {
+  margin-bottom: 0.6rem;
+}
+
+/* ===== Footer ===== */
+.footer-cta {
+  background: #1e293b;
+  text-align: center;
+  padding: 2rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+/* ===== Mobile Optimization ===== */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 4rem 1rem;
+  }
+
+  .main {
+    padding: 2.5rem 0;
+  }
+}

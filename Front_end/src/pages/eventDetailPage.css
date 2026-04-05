@@ -1,0 +1,144 @@
+.event-detail-page {
+  flex: 1;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ==================== HERO DENGAN GAMBAR ASTAGA ==================== */
+.hero {
+  height: 92vh;
+  min-height: 680px;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url(${musicFestival}) center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: -1px;           
+}
+
+/* Fallback gambar kalau yang pertama tidak muncul TESTING */
+.hero.fallback {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('https://picsum.photos/id/201/1920/1080');
+}
+
+/* Hero Content */
+.hero-content {
+  max-width: 1100px;
+  width: 100%;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 9.5vw, 5.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.6rem;
+  color: #f8fafc;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+.hero .date {
+  font-size: 1.55rem;
+  color: #e2e8f0;
+  margin: 1rem 0;
+}
+
+.hero .time {
+  font-size: 1.4rem;
+  color: #cbd5e1;
+}
+
+.hero .venue {
+  font-size: 1.4rem;
+  margin-top: 1.2rem;
+  opacity: 0.95;
+}
+
+/* Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Quick Info */
+.quick-info {
+  background: #1e293b;
+  padding: 3rem 0;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.info-row strong {
+  display: block;
+  color: #a5b4fc;
+  margin-bottom: 0.6rem;
+}
+
+/* Main Content */
+.main {
+  padding: 5rem 0;
+}
+
+h2 {
+  font-size: 2.1rem;
+  color: #c7d2fe;
+  margin-bottom: 1.8rem;
+}
+
+.booking-section {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 3.5rem;
+  border: 1px solid #334155;
+  margin: 3rem 0;
+}
+
+.price-info {
+  font-size: 2.9rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.btn-book {
+  margin-top: 2.5rem;
+  padding: 18px 52px;
+  border-radius: 9999px;
+  background: #6366f1;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-book:hover {
+  background: #4f46e5;
+  transform: translateY(-4px);
+}
+
+.footer-cta {
+  background: #1e293b;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #94a3b8;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    height: 78vh;
+    min-height: 520px;
+  }
+}

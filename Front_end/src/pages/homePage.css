@@ -1,0 +1,218 @@
+/* ===== HomePage.css ===== */
+.home-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: #1e293b;
+  padding: 1rem 0;
+  border-bottom: 1px solid #334155;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #c7d2fe;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: #a5b4fc;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-login {
+  background: transparent;
+  color: #e2e8f0;
+  border: 2px solid #64748b;
+}
+
+.btn-login:hover {
+  background: #334155;
+  border-color: #94a3b8;
+}
+
+.btn-register {
+  background: #6366f1;
+  color: white;
+}
+
+.btn-register:hover {
+  background: #4f46e5;
+}
+
+/* ===== Hero / Header = ko ga muncul :)===== */ 
+.hero {
+  height: 65vh;
+  min-height: 500px;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+    url('https://images.unsplash.com/photo-1549576490-b0b4831aa60a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  color: #e0e7ff;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+}
+
+/* ===== Main Content ===== */
+.main {
+  padding: 2rem 0 5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #c7d2fe;
+  text-align: center;
+}
+
+/* ===== Event Cards ===== */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.8rem;
+}
+
+.event-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 1.8rem;
+  border: 1px solid #334155;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  border-color: #6366f1;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
+}
+
+.event-card h3 {
+  font-size: 1.35rem;
+  margin: 0 0 0.8rem 0;
+  color: #e0e7ff;
+}
+
+.event-card p {
+  margin: 0.6rem 0;
+  color: #cbd5e1;
+}
+
+.event-card .organizer {
+  color: #a5b4fc;
+  font-weight: 500;
+}
+
+.event-card .info {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid #334155;
+  font-size: 0.95rem;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-top: 0.8rem;
+}
+
+.free {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+/* ===== Empty State ===== */
+.no-events {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: #1e293b;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-top: 4rem;
+}
+
+/* ===== Mobile Optimization ===== */
+@media (max-width: 768px) {
+  .hero {
+    height: 55vh;
+    padding: 3rem 1rem;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+}
