@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./profilePage.css";
+import "../css/profilePage.css";
 
 type User = {
   name: string;

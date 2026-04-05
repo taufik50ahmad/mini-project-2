@@ -35,9 +35,9 @@ function App() {
             element={<UploadPayment />}
           />
 
-{/* homepage */}
-<Route path="/homepage" element={<HomePage />} />
-<Route path="/" element={<HomePage />} />
+          {/* homepage */}
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
 
           {/* 🧑‍💼 ORGANIZER */}
           <Route

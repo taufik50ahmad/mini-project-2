@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./HomePage.css";
+import "../css/homePage.css";
 
 // import logo
 import gojekLogo from "../assets/gojek.jpg";

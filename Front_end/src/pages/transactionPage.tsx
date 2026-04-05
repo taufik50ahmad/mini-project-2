@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../lib/axios.js";
+import "../css/transactionPage.css";
 
 export default function TransactionPage() {
   const { eventId } = useParams<{ eventId: string }>();
@@ -75,86 +76,87 @@ export default function TransactionPage() {
   if (!event) return <div>Loading event...</div>;
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>{event.title}</h2>
-      <p>Price: {event.price}</p>
+    <div className="transaction-page">
+      <div className="transaction-container">
+        <h1>{event.title}</h1>
 
-      {/* QUANTITY */}
-      <div>
-        <label>Quantity:</label>
-        <input
-          type="number"
-          value={quantity}
-          min={1}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-        />
-      </div>
+        <p className="price">Price: {event.price}</p>
 
-      {/* VOUCHER */}
-      <div>
-        <label>Voucher Code:</label>
-        <input
-          type="text"
-          value={voucherCode}
-          onChange={(e) => setVoucherCode(e.target.value)}
-        />
-      </div>
-
-      {/* POINTS */}
-      <div>
-        <label>
+        {/* Quantity */}
+        <div className="input-group">
+          <label>Quantity</label>
           <input
-            type="checkbox"
-            checked={usePoints}
-            onChange={() => setUsePoints(!usePoints)}
+            type="number"
+            value={quantity}
+            min={1}
+            onChange={(e) => setQuantity(Number(e.target.value))}
           />
-          Use Points
-        </label>
-      </div>
-
-      {/* ✅ COUPON CHECKBOX */}
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={useCoupon}
-            onChange={() => {
-              setUseCoupon(!useCoupon);
-
-              // reset when unchecked
-              if (useCoupon) {
-                setSelectedCoupon(null);
-              }
-            }}
-          />
-          Use Coupon
-        </label>
-      </div>
-
-      {/* ✅ COUPON DROPDOWN */}
-      {useCoupon && (
-        <div>
-          <label>Select Coupon:</label>
-          <select
-            value={selectedCoupon || ""}
-            onChange={(e) =>
-              setSelectedCoupon(e.target.value ? Number(e.target.value) : null)
-            }
-          >
-            <option value="">-- Select Coupon --</option>
-            {coupons.map((c) => (
-              <option key={c.id} value={c.id}>
-                Discount: {c.discountAmount}
-              </option>
-            ))}
-          </select>
         </div>
-      )}
 
-      {/* BUY BUTTON */}
-      <button onClick={handleBuy} style={{ marginTop: 10 }}>
-        Buy Ticket
-      </button>
+        {/* Voucher */}
+        <div className="input-group">
+          <label>Voucher Code</label>
+          <input
+            placeholder="Optional"
+            type="text"
+            value={voucherCode}
+            onChange={(e) => setVoucherCode(e.target.value)}
+          />
+        </div>
+
+        {/* Points */}
+        <div className="checkbox-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={usePoints}
+              onChange={() => setUsePoints(!usePoints)}
+            />
+            Use Points
+          </label>
+        </div>
+
+        {/* Coupon */}
+        <div className="checkbox-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={useCoupon}
+              onChange={() => {
+                setUseCoupon(!useCoupon);
+                if (useCoupon) setSelectedCoupon(null);
+              }}
+            />
+            Use Coupon
+          </label>
+        </div>
+
+        {useCoupon && (
+          <div className="input-group">
+            <label>Select Coupon</label>
+            <select
+              value={selectedCoupon || ""}
+              onChange={(e) =>
+                setSelectedCoupon(
+                  e.target.value ? Number(e.target.value) : null,
+                )
+              }
+            >
+              <option value="">-- Select Coupon --</option>
+              {coupons.map((c) => (
+                <option key={c.id} value={c.id}>
+                  Discount: {c.discountAmount}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* Button */}
+        <button className="btn-buy" onClick={handleBuy}>
+          Buy Ticket
+        </button>
+      </div>
     </div>
   );
 }

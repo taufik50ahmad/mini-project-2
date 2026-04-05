@@ -1,0 +1,105 @@
+/* Transaction Page */
+
+.transaction-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.96)),
+    url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+}
+
+/* Container */
+.transaction-container {
+  background: rgba(30, 41, 59, 0.96);
+  border-radius: 20px;
+  padding: 2.8rem 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid #475569;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Title */
+.transaction-container h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #e0e7ff;
+  font-size: 2rem;
+}
+
+/* Price */
+.price {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #a5b4fc;
+  font-weight: 600;
+}
+
+/* Input group */
+.input-group {
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Checkbox */
+.checkbox-group {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Button */
+.btn-buy {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 15px;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-buy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}

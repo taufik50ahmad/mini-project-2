@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/axios.js";
+import "../css/createEventPage.css";
 
 export default function CreateEventPage() {
   const navigate = useNavigate();
@@ -38,42 +39,60 @@ export default function CreateEventPage() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Create Event</h2>
+    <div className="create-page">
+      <div className="create-container">
+        <h1>Create Event</h1>
 
-      <input name="title" placeholder="Title" onChange={handleChange} />
-      <br />
+        <div className="input-group">
+          <input name="title" placeholder="Title" onChange={handleChange} />
+        </div>
 
-      <input
-        name="description"
-        placeholder="Description"
-        onChange={handleChange}
-      />
-      <br />
+        <div className="input-group">
+          <input
+            name="description"
+            placeholder="Description"
+            onChange={handleChange}
+          />
+        </div>
 
-      <input name="location" placeholder="Location" onChange={handleChange} />
-      <br />
+        <div className="input-group">
+          <input
+            name="location"
+            placeholder="Location"
+            onChange={handleChange}
+          />
+        </div>
 
-      <input
-        name="price"
-        type="number"
-        placeholder="Price"
-        onChange={handleChange}
-      />
-      <br />
+        <div className="input-group">
+          <input
+            name="price"
+            type="number"
+            placeholder="Price"
+            onChange={handleChange}
+          />
+        </div>
 
-      <input
-        name="totalSeats"
-        type="number"
-        placeholder="Total Seats"
-        onChange={handleChange}
-      />
-      <br />
+        <div className="input-group">
+          <input
+            name="totalSeats"
+            type="number"
+            placeholder="Total Seats"
+            onChange={handleChange}
+          />
+        </div>
 
-      <input name="eventDate" type="datetime-local" onChange={handleChange} />
-      <br />
+        <div className="input-group">
+          <input
+            name="eventDate"
+            type="datetime-local"
+            onChange={handleChange}
+          />
+        </div>
 
-      <button onClick={handleSubmit}>Create Event</button>
+        <button className="btn-create" onClick={handleSubmit}>
+          Create Event
+        </button>
+      </div>
     </div>
   );
 }

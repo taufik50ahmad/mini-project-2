@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../lib/axios.js";
+import "../css/paymentProof.css";
 
 export default function UploadProof() {
   const { transactionId } = useParams();
@@ -42,14 +43,21 @@ export default function UploadProof() {
   };
 
   return (
-    <div>
-      <h2>Upload Payment Proof</h2>
+    <div className="upload-page">
+      <div className="upload-container">
+        <h1>Upload Payment Proof</h1>
 
-      <input type="file" onChange={(e) => setFile(e.target.files![0])} />
+        {/* File input */}
+        <label className="file-label">
+          {file ? file.name : "Choose payment proof image"}
+          <input type="file" onChange={(e) => setFile(e.target.files![0])} />
+        </label>
 
-      <button onClick={upload} disabled={loading}>
-        {loading ? "Uploading..." : "Upload"}
-      </button>
+        {/* Upload button */}
+        <button className="btn-upload" onClick={upload} disabled={loading}>
+          {loading ? "Uploading..." : "Upload"}
+        </button>
+      </div>
     </div>
   );
 }
