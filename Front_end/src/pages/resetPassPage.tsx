@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import "../css/resetPassPage.css";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(""); // ✅ NEW
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [params] = useSearchParams();
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ export default function ResetPasswordPage() {
         body: JSON.stringify({
           token,
           newPassword: password,
-          confirmPassword: confirmPassword, // ✅ SEND THIS
+          confirmPassword: confirmPassword,
         }),
       });
 
@@ -51,24 +52,28 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div>
-      <h1>Reset Password</h1>
+    <div className="reset-page">
+      <div className="reset-container">
+        <h1>Reset Password</h1>
 
-      {/* ✅ New Password */}
-      <input
-        type="password"
-        placeholder="New Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        {/* New Password */}
+        <input
+          type="password"
+          placeholder="New Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      {/* ✅ Confirm Password */}
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
+        {/* Confirm Password */}
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
 
-      <button onClick={handleReset}>Reset Password</button>
+        <button onClick={handleReset}>Reset Password</button>
+      </div>
     </div>
   );
 }

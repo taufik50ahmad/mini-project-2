@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../lib/axios.js";
+import "../css/organizerEventPage.css";
 
 export default function OrganizerEventsPage() {
   const [events, setEvents] = useState<any[]>([]);
@@ -75,126 +76,118 @@ export default function OrganizerEventsPage() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>My Events</h2>
+    <div className="events-page">
+      <div className="events-container">
+        <h1>My Events</h1>
 
-      {events.length === 0 && <p>No events yet</p>}
+        {events.length === 0 && <p className="empty">No events yet</p>}
 
-      {events.map((event) => {
-        const isEditing = editingId === event.id;
+        {events.map((event) => {
+          const isEditing = editingId === event.id;
 
-        return (
-          <div
-            key={event.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: 10,
-              marginBottom: 10,
-            }}
-          >
-            {isEditing ? (
-              <>
-                {/* ✏️ EDIT MODE */}
-                <input
-                  value={form.title}
-                  onChange={(e) => setForm({ ...form, title: e.target.value })}
-                  placeholder="Title"
-                />
-                <br />
+          return (
+            <div key={event.id} className="event-card">
+              {isEditing ? (
+                <div className="edit-form">
+                  <input
+                    value={form.title}
+                    onChange={(e) =>
+                      setForm({ ...form, title: e.target.value })
+                    }
+                    placeholder="Title"
+                  />
 
-                <input
-                  value={form.description}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      description: e.target.value,
-                    })
-                  }
-                  placeholder="Description"
-                />
-                <br />
+                  <input
+                    value={form.description}
+                    onChange={(e) =>
+                      setForm({ ...form, description: e.target.value })
+                    }
+                    placeholder="Description"
+                  />
 
-                <input
-                  type="number"
-                  value={form.price}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      price: Number(e.target.value),
-                    })
-                  }
-                  placeholder="Price"
-                />
-                <br />
+                  <input
+                    type="number"
+                    value={form.price}
+                    onChange={(e) =>
+                      setForm({ ...form, price: Number(e.target.value) })
+                    }
+                    placeholder="Price"
+                  />
 
-                <input
-                  type="number"
-                  value={form.totalSeats}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      totalSeats: Number(e.target.value),
-                    })
-                  }
-                  placeholder="Total Seats"
-                />
-                <br />
+                  <input
+                    type="number"
+                    value={form.totalSeats}
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        totalSeats: Number(e.target.value),
+                      })
+                    }
+                    placeholder="Total Seats"
+                  />
 
-                <input
-                  value={form.location}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      location: e.target.value,
-                    })
-                  }
-                  placeholder="Location"
-                />
-                <br />
+                  <input
+                    value={form.location}
+                    onChange={(e) =>
+                      setForm({ ...form, location: e.target.value })
+                    }
+                    placeholder="Location"
+                  />
 
-                <input
-                  value={form.eventDate}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      eventDate: e.target.value,
-                    })
-                  }
-                  placeholder="Event Date"
-                  type="datetime-local"
-                />
+                  <input
+                    value={form.eventDate}
+                    onChange={(e) =>
+                      setForm({ ...form, eventDate: e.target.value })
+                    }
+                    type="datetime-local"
+                  />
 
-                <button onClick={() => handleUpdate(event.id)}>Save</button>
-                <button onClick={handleCancel}>Cancel</button>
-              </>
-            ) : (
-              <>
-                {/* 📄 VIEW MODE */}
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-                <p>Price: {event.price}</p>
-                <p>
-                  Seats: {event.availableSeats} / {event.totalSeats}
-                </p>
-                <p>Location: {event.location}</p>
-                <p>
-                  Event Date:{" "}
-                  {new Date(event.eventDate).toLocaleDateString("en-GB", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </p>
+                  <div className="btn-group">
+                    <button onClick={() => handleUpdate(event.id)}>Save</button>
+                    <button className="btn-cancel" onClick={handleCancel}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <h3>{event.title}</h3>
+                  <p>{event.description}</p>
+                  <p>
+                    <strong>Price:</strong> {event.price}
+                  </p>
+                  <p>
+                    <strong>Seats:</strong> {event.availableSeats} /{" "}
+                    {event.totalSeats}
+                  </p>
+                  <p>
+                    <strong>Location:</strong> {event.location}
+                  </p>
+                  <p>
+                    <strong>Date:</strong>{" "}
+                    {new Date(event.eventDate).toLocaleDateString("en-GB", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
 
-                <button onClick={() => handleEdit(event)}>Edit</button>
-
-                <button onClick={() => handleDelete(event.id)}>Delete</button>
-              </>
-            )}
-          </div>
-        );
-      })}
+                  <div className="btn-group">
+                    <button onClick={() => handleEdit(event)}>Edit</button>
+                    <button
+                      className="btn-delete"
+                      onClick={() => handleDelete(event.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

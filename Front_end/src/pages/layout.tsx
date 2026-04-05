@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./Layout.css"; 
+import "../css/Layout.css"; 
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -51,7 +51,10 @@ export default function Layout() {
                 <button className="nav-btn" onClick={() => navigate("/login")}>
                   Sign In
                 </button>
-                <button className="nav-btn register" onClick={() => navigate("/register")}>
+                <button
+                  className="nav-btn register"
+                  onClick={() => navigate("/register")}
+                >
                   Sign Up
                 </button>
               </>
@@ -59,22 +62,40 @@ export default function Layout() {
               <>
                 {role === "ORGANIZER" && (
                   <>
-                    <button className="nav-btn" onClick={() => navigate("/organizer/transactions")}>
+                    <button
+                      className="nav-btn"
+                      onClick={() => navigate("/organizer/transactions")}
+                    >
                       Dashboard
                     </button>
-                    <button className="nav-btn" onClick={() => navigate("/organizer/events")}>
+                    <button
+                      className="nav-btn"
+                      onClick={() => navigate("/organizer/events")}
+                    >
                       Event Management
+                    </button>
+                    <button
+                      className="nav-btn"
+                      onClick={() => navigate("/organizer/create")}
+                    >
+                      Create Event
                     </button>
                   </>
                 )}
 
                 {role === "CUSTOMER" && (
-                  <button className="nav-btn" onClick={() => navigate("/my-transactions")}>
+                  <button
+                    className="nav-btn"
+                    onClick={() => navigate("/my-transactions")}
+                  >
                     My Transactions
                   </button>
                 )}
 
-                <button className="nav-btn" onClick={() => navigate("/profile")}>
+                <button
+                  className="nav-btn"
+                  onClick={() => navigate("/profile")}
+                >
                   {name || "Profile"}
                 </button>
 

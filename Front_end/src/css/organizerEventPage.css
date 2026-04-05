@@ -1,0 +1,111 @@
+/* Organizer Events Page */
+
+.events-page {
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.96)),
+    url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat fixed;
+
+  color: #e2e8f0;
+}
+
+.events-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.events-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #e0e7ff;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  color: #94a3b8;
+}
+
+/* Event Card */
+.event-card {
+  background: rgba(30, 41, 59, 0.96);
+  border-radius: 18px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #475569;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Text */
+.event-card h3 {
+  color: #c7d2fe;
+  margin-bottom: 0.8rem;
+}
+
+.event-card p {
+  margin: 0.4rem 0;
+}
+
+/* Edit Form */
+.edit-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.edit-form input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Delete button */
+.btn-delete {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* Cancel button */
+.btn-cancel {
+  background: #475569;
+}
+
+.btn-cancel:hover {
+  background: #334155;
+}

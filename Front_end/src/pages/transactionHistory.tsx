@@ -1,10 +1,11 @@
-// src/pages/MyTransactions.tsx
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../lib/axios.js";
-import UploadProof from "./paymentProof.tsx";
+import "../css/transactionHistory.css";
 
 export default function MyTransactions() {
   const [data, setData] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     const res = await api.get("/api/transactions/my");
@@ -16,22 +17,43 @@ export default function MyTransactions() {
   }, []);
 
   return (
-    <div>
-      <h2>My Transactions</h2>
+    <div className="mytrx-page">
+      <div className="mytrx-container">
+        <h1>My Transactions</h1>
 
-      {data.map((trx) => (
-        <div key={trx.id} style={{ border: "1px solid gray", margin: 10 }}>
-          <h3>{trx.event.title}</h3>
-          <p>Status: {trx.status}</p>
-          <p>Total: {trx.totalPrice}</p>
+        {data.length === 0 && <p className="empty">No transactions yet</p>}
 
-          {trx.paymentProof && <img src={trx.paymentProof} width={150} />}
+        {data.map((trx) => (
+          <div key={trx.id} className="mytrx-card">
+            <div className="trx-info">
+              <h3>{trx.event.title}</h3>
 
-          {trx.status === "PENDING" && !trx.paymentProof && (
-            <UploadProof />
-          )}
-        </div>
-      ))}
+              <p className={`status ${trx.status.toLowerCase()}`}>
+                {trx.status}
+              </p>
+
+              <p>
+                <strong>Total:</strong> {trx.totalPrice}
+              </p>
+            </div>
+
+            {/* Image */}
+            {trx.paymentProof && (
+              <img src={trx.paymentProof} alt="proof" className="trx-image" />
+            )}
+
+            {/* Action */}
+            {trx.status === "PENDING" && !trx.paymentProof && (
+              <button
+                className="btn-upload"
+                onClick={() => navigate(`/upload-payment/${trx.id}`)}
+              >
+                Upload Payment
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

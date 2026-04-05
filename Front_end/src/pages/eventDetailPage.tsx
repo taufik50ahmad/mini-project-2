@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./EventDetailPage.css";
+import "../css/eventDetailPage.css";
 
 //tambah gambar
 import musicFestival from "../assets/ID5th_main.png"; //music festiv

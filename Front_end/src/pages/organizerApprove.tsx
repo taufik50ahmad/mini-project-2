@@ -1,6 +1,7 @@
 // src/pages/OrganizerTransactions.tsx
 import { useEffect, useState } from "react";
 import { api } from "../lib/axios.js";
+import "../css/organizerApprove.css";
 
 export default function OrganizerTransactions() {
   const [data, setData] = useState<any[]>([]);
@@ -40,90 +41,74 @@ export default function OrganizerTransactions() {
   };
 
   return (
-    <div>
-      <h2>Organizer Transactions</h2>
+    <div className="trx-page">
+      <div className="trx-container">
+        <h1>Organizer Transactions</h1>
 
-      {data.map((trx) => (
-        <div
-          key={trx.id}
-          style={{
-            display: "flex",
-            gap: "20px",
-            border: "1px solid gray",
-            padding: "15px",
-            marginBottom: "15px",
-            alignItems: "center",
-          }}
-        >
-          {/* LEFT SIDE */}
-          <div style={{ flex: 1 }}>
-            <h3>{trx.event.title}</h3>
-            <p>User: {trx.user.email}</p>
-            <p>Qty: {trx.quantity}</p>
-            <p>Total: {trx.totalPrice}</p>
-            <p>Status: {trx.status}</p>
+        {data.map((trx) => (
+          <div key={trx.id} className="trx-card">
+            {/* LEFT */}
+            <div className="trx-info">
+              <h3>{trx.event.title}</h3>
+              <p>
+                <strong>User:</strong> {trx.user.email}
+              </p>
+              <p>
+                <strong>Qty:</strong> {trx.quantity}
+              </p>
+              <p>
+                <strong>Total:</strong> {trx.totalPrice}
+              </p>
+              <p className={`status ${trx.status.toLowerCase()}`}>
+                {trx.status}
+              </p>
 
-            {trx.status === "PENDING" && (
-              <>
-                <button onClick={() => updateStatus(trx.id, "ACCEPTED")}>
-                  ✅ Accept
-                </button>
+              {trx.status === "PENDING" && (
+                <div className="btn-group">
+                  <button
+                    className="btn-accept"
+                    onClick={() => updateStatus(trx.id, "ACCEPTED")}
+                  >
+                    Accept
+                  </button>
 
-                <button onClick={() => updateStatus(trx.id, "REJECTED")}>
-                  ❌ Reject
-                </button>
-              </>
-            )}
+                  <button
+                    className="btn-reject"
+                    onClick={() => updateStatus(trx.id, "REJECTED")}
+                  >
+                    Reject
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* RIGHT */}
+            <div className="trx-image">
+              {trx.paymentProof ? (
+                <img
+                  src={trx.paymentProof}
+                  alt="proof"
+                  onClick={() => {
+                    setSelectedImage(trx.paymentProof);
+                    setZoom(1);
+                    setPosition({ x: 0, y: 0 });
+                  }}
+                />
+              ) : (
+                <p className="no-proof">No proof</p>
+              )}
+            </div>
           </div>
+        ))}
+      </div>
 
-          {/* RIGHT SIDE IMAGE */}
-          <div>
-            {trx.paymentProof ? (
-              <img
-                src={trx.paymentProof}
-                alt="proof"
-                draggable={false}
-                onClick={() => {
-                  setSelectedImage(trx.paymentProof);
-                  setZoom(1);
-                  setPosition({ x: 0, y: 0 });
-                }}
-                style={{
-                  width: "150px",
-                  height: "150px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
-              />
-            ) : (
-              <p>No proof</p>
-            )}
-          </div>
-        </div>
-      ))}
-
-      {/* 🔥 FULLSCREEN IMAGE VIEWER */}
+      {/* FULLSCREEN VIEWER */}
       {selectedImage && (
-        <div
-          onClick={() => setSelectedImage(null)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.9)",
-            zIndex: 999,
-            overflow: "hidden",
-          }}
-        >
+        <div className="image-viewer" onClick={() => setSelectedImage(null)}>
           <img
             src={selectedImage}
             draggable={false}
-            onDragStart={(e) => e.preventDefault()}
             onClick={(e) => e.stopPropagation()}
-            // ✅ Start drag
             onMouseDown={(e) => {
               if (zoom === 1) return;
               setDragging(true);
@@ -132,7 +117,6 @@ export default function OrganizerTransactions() {
                 y: e.clientY - position.y,
               });
             }}
-            // ✅ Drag move
             onMouseMove={(e) => {
               if (!dragging) return;
               setPosition({
@@ -142,14 +126,12 @@ export default function OrganizerTransactions() {
             }}
             onMouseUp={() => setDragging(false)}
             onMouseLeave={() => setDragging(false)}
-            // 🔥 Scroll zoom
             onWheel={(e) => {
               e.preventDefault();
               setZoom((z) =>
                 e.deltaY < 0 ? Math.min(5, z + 0.2) : Math.max(1, z - 0.2),
               );
             }}
-            // 🔥 Double click zoom
             onDoubleClick={() => {
               if (zoom === 1) setZoom(2);
               else {
@@ -157,54 +139,33 @@ export default function OrganizerTransactions() {
                 setPosition({ x: 0, y: 0 });
               }
             }}
+            className="viewer-image"
             style={{
-              cursor: zoom > 1 ? (dragging ? "grabbing" : "grab") : "default",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
               transform: `
-                translate(-50%, -50%)
-                translate(${position.x}px, ${position.y}px)
-                scale(${zoom})
-              `,
-              transition: dragging ? "none" : "0.15s ease-out",
-              userSelect: "none",
+              translate(-50%, -50%)
+              translate(${position.x}px, ${position.y}px)
+              scale(${zoom})
+            `,
             }}
           />
 
-          {/* 🔥 CONTROLS */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              position: "fixed",
-              bottom: "30px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              display: "flex",
-              gap: "10px",
-              background: "rgba(0,0,0,0.6)",
-              padding: "10px 20px",
-              borderRadius: "10px",
-            }}
-          >
+          {/* Controls */}
+          <div className="viewer-controls" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setZoom((z) => Math.min(5, z + 0.2))}>
-              ➕
+              +
             </button>
-
             <button onClick={() => setZoom((z) => Math.max(1, z - 0.2))}>
-              ➖
+              -
             </button>
-
             <button
               onClick={() => {
                 setZoom(1);
                 setPosition({ x: 0, y: 0 });
               }}
             >
-              🔄 Reset
+              Reset
             </button>
-
-            <button onClick={() => setSelectedImage(null)}>❌</button>
+            <button onClick={() => setSelectedImage(null)}>Close</button>
           </div>
         </div>
       )}

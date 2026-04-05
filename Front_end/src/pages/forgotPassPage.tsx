@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../css/forgotPassPage.css";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -27,15 +28,19 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div>
-      <h1>Forgot Password</h1>
+    <div className="forgot-page">
+      <div className="forgot-container">
+        <h1>Forgot Password</h1>
 
-      <input
-        placeholder="Enter your email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <button onClick={handleSubmit}>Send Reset Link</button>
+        <button onClick={handleSubmit}>Send Reset Link</button>
+      </div>
     </div>
   );
 }
