@@ -49,7 +49,7 @@ app.use("/api/organizer", organizerRoute);
 app.use("/api", registerRoute);
 
 // Points
-app.use("/api/users", pointRoute);
+app.use("/api/users", pointRoute); 
 
 // Coupons
 app.use("/api/users", couponRoute);
